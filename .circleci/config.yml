@@ -4,6 +4,7 @@ jobs:
   test:
     docker:
       - image: cimg/python:3.9
+    resource_class: small
     environment:
       COMPOSE_FILE: ./docker-compose.yml
       DOCKER_BUILDKIT: "1"
