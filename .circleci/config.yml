@@ -1,0 +1,23 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/python:3.9
+    environment:
+      COMPOSE_FILE: ./.circleci/docker-compose.yml
+      DOCKER_BUILDKIT: "1"
+      AWS_ACCESS_KEY_ID: "foobar"
+      AWS_SECRET_ACCESS_KEY: "dummydummydummydummydummydummy"
+    steps:
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
+      - checkout
+      - run: |
+          docker-compose run -e "AWS_ACCESS_KEY_ID=somethingelse" app printenv AWS_ACCESS_KEY_ID
+
+workflows:
+  main:
+    jobs:
+      - test
