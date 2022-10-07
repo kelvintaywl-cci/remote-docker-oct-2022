@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: cimg/python:3.9
     environment:
-      COMPOSE_FILE: ./.circleci/docker-compose.yml
+      COMPOSE_FILE: ./docker-compose.yml
       DOCKER_BUILDKIT: "1"
       AWS_ACCESS_KEY_ID: "foobar"
       AWS_SECRET_ACCESS_KEY: "dummydummydummydummydummydummy"
